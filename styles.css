@@ -1,0 +1,485 @@
+/* Base styles */
+body {
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  background-color: #beffc7;
+  color: #0c7c59;
+}
+
+/* Header styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0c7c59;
+  padding: 1rem;
+  border-bottom: 5px solid #b6465f;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+header.scrolled {
+  box-shadow: 0 2px 8px #bc4b51;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Left section */
+.left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.name {
+  margin: 0.3rem 0 0 0;
+  font-size: 1.2rem;
+  color: white;
+}
+
+/* Center nav links (desktop only) */
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-left: auto;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+}
+
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #beffc7;
+  transition: width 0.3s ease-in-out;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  background-color: #bc4b51;
+  color: #beffc7;
+}
+
+/* Right section */
+.right-section {
+  position: relative;
+}
+
+#menu-toggle {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+#menu {
+  position: absolute;
+  right: 0;
+  top: 2.5rem;
+  background-color: white;
+  border: 1px solid #8eb1c7;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+#menu a {
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  color: #0c7c59;
+}
+
+#menu a:hover {
+  background-color: #8eb1c7;
+  color: white;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Hamburger button (mobile only) */
+.hamburger {
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: none;
+}
+
+/* Mobile side menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 250px;
+  background-color: #8eb1c7;
+  box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem;
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+  z-index: 1000;
+}
+
+.side-menu.open {
+  transform: translateX(0);
+}
+
+.side-menu a {
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  transition: background 0.3s;
+}
+
+.side-menu a:hover {
+  background-color: #0c7c59;
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Section styles */
+section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  max-width: 800px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+h2 {
+  color: #b6465f;
+  border-bottom: 2px solid #8eb1c7;
+  padding-bottom: 0.3rem;
+}
+
+.skill-list li {
+  background-color: #8eb1c7;
+  color: white;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border-radius: 5px;
+  display: inline-block;
+}
+
+/* Footer styles */
+footer {
+  text-align: center;
+  background-color: #0c7c59;
+  color: white;
+  padding: 1rem;
+}
+
+/* Flip card education section */
+.edu-flip-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  margin-top: 2rem;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 250px;
+  height: 200px;
+  perspective: 1000px;
+  margin: 0.5rem;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-front {
+  background-color: #8eb1c7;
+  color: white;
+}
+
+.flip-card-back {
+  background-color: #bc4b51;
+  color: #fff;
+  transform: rotateY(180deg);
+}
+
+/* Standard education card section */
+.edu-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px 20px;
+}
+
+.edu-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  padding: 25px;
+  max-width: 300px;
+  flex: 1 1 250px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: popIn 0.8s ease forwards;
+}
+
+.edu-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+
+.edu-card i {
+  font-size: 35px;
+  color: #c0392b;
+  margin-bottom: 15px;
+}
+
+.edu-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.edu-card p {
+  font-size: 16px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* Entrance animation */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+/* Skills Grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.skill-item {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.skill-item:hover {
+  transform: translateY(-5px);
+}
+
+.skill-item i {
+  font-size: 2rem;
+  color: #bc4b51;
+  margin-bottom: 0.5rem;
+}
+
+.skill-item p {
+  margin: 0;
+  font-weight: bold;
+  color: #0c7c59;
+}
+/* Experience List */
+.exp-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 2rem;
+}
+
+.exp-list li {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.exp-list li:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.exp-list h3 {
+  margin: 0 0 0.3rem;
+  color: #bc4b51;
+}
+
+.exp-list span {
+  display: block;
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 0.7rem;
+}
+
+.exp-list p {
+  margin: 0;
+  color: #333;
+  line-height: 1.4;
+}
+/* Art Gallery */
+.art-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.art-item {
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: white;
+  transition: transform 0.3s ease;
+}
+
+.art-item:hover {
+  transform: scale(1.03);
+}
+
+.art-item img {
+  width: 100%;
+  display: block;
+}
+
+.art-item p {
+  margin: 0.5rem;
+  font-size: 0.95rem;
+  color: #0c7c59;
+  text-align: center;
+}
+/* Contact List */
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 1.5rem;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.contact-list i {
+  font-size: 1.2rem;
+  color: #bc4b51;
+  margin-right: 0.75rem;
+}
+
+.contact-list a {
+  color: #0c7c59;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.contact-list a:hover {
+  color: #bc4b51;
+}
+.footer-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-icon,
+.footer-emoji {
+  display: inline-block;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
